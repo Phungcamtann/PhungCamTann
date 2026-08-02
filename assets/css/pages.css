@@ -1,0 +1,580 @@
+/* =========================================
+   GENERAL PAGE STYLES
+========================================= */
+.section-header {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.section-title span {
+  color: var(--accent-glow);
+}
+
+.title-line {
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent-glow);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(255, 70, 150, 0.5);
+}
+
+/* Hiệu ứng Fade In nhẹ khi load trang nội dung */
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   ABOUT PAGE
+========================================= */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+}
+
+.about-bio,
+.about-skills {
+  padding: 2.5rem;
+}
+
+.about-bio h2,
+.about-skills h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent-glow);
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 0.8rem;
+}
+
+.about-bio p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  text-align: justify;
+}
+
+/* Hiển thị Kỹ năng */
+.skill-category {
+  margin-bottom: 2rem;
+}
+
+.skill-category:last-child {
+  margin-bottom: 0;
+}
+
+.skill-category h3 {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-family: var(--font-body);
+}
+
+.badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+/* Responsive cho About Page */
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================
+   HOME PAGE (PROFILE CARD & ABOUT LAYOUT)
+========================================= */
+.home-grid {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* 1. Profile Card (Cột trái) */
+.profile-card {
+  padding: 0; /* Bỏ padding mặc định của glass-panel để full viền */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-header {
+  position: relative;
+}
+
+.profile-bg {
+  height: 160px;
+  background-color: var(--bg-secondary);
+  /* Gắn đường dẫn ảnh nền của bạn vào đây sau */
+  background-image: url("../images/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.profile-avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 4px solid var(--bg-main);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  margin: -65px auto 0; /* Kéo avatar đè lên ảnh nền */
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-secondary);
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info {
+  text-align: center;
+  padding: 1.5rem 2rem 2rem;
+}
+
+.profile-name {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.profile-role {
+  color: var(--accent-glow);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-heading);
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: var(--trans-fast);
+}
+
+.social-icon:hover {
+  background: var(--accent-glow);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.profile-actions {
+  display: flex;
+  border-top: 1px solid var(--glass-border);
+}
+
+.action-btn {
+  flex: 1;
+  padding: 1.2rem 0;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: var(--trans-fast);
+}
+
+.action-btn:first-child {
+  border-right: 1px solid var(--glass-border);
+}
+
+.action-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 70, 150, 0.05);
+}
+
+/* 2. Cột Phải (About & Terminal) */
+.home-about {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.home-about h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 1rem;
+}
+
+.accent-letter {
+  color: var(--accent-glow);
+}
+
+.about-text .greeting {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+}
+
+.about-text p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+/* Hiệu ứng danh sách thông tin có dấu chấm (...) */
+.info-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 3rem;
+  list-style: none;
+  margin-bottom: 2.5rem;
+}
+
+.info-list li {
+  display: flex;
+  align-items: flex-end;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+}
+
+.info-list .label {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.info-list .dots {
+  flex-grow: 1;
+  border-bottom: 2px dotted var(--text-muted);
+  margin: 0 10px;
+  position: relative;
+  top: -5px;
+  opacity: 0.5;
+}
+
+.info-list .value {
+  color: var(--text-secondary);
+}
+
+/* =========================================
+   RESUME PAGE
+========================================= */
+.resume-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.column-title {
+  font-size: 1.5rem;
+  color: var(--accent-glow);
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 0.8rem;
+}
+
+/* Timeline Structure */
+.timeline {
+  position: relative;
+  padding-left: 30px;
+  border-left: 2px solid var(--glass-border);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -37px; /* Căn giữa dot lên đường viền */
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  background-color: var(--accent-glow);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 70, 150, 0.6);
+}
+
+/* Resume Cards */
+.resume-card {
+  padding: 1.5rem;
+  transition: var(--trans-smooth);
+}
+
+.resume-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 70, 150, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.resume-date {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: rgba(255, 70, 150, 0.1);
+  color: var(--accent-glow);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.resume-role {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+
+.resume-company {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  margin-bottom: 1rem;
+}
+
+.resume-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* =========================================
+   WORKS PAGE
+========================================= */
+.works-grid {
+  display: grid;
+  /* Tự động tính toán số cột dựa trên chiều rộng, tối thiểu 300px mỗi card */
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+.work-card {
+  padding: 0; /* Gỡ padding của class glass-panel để full viền ảnh */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: var(--trans-smooth);
+}
+
+/* Hiệu ứng nảy và phát sáng viền khi Hover Card */
+.work-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 70, 150, 0.4);
+}
+
+.work-image {
+  position: relative;
+  height: 220px;
+  background-color: var(--bg-secondary);
+  overflow: hidden;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* Khối màu tạm thời khi chưa có ảnh */
+.img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #121218, #1a1a24);
+}
+
+/* Thay bằng ảnh thật sau này */
+.work-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.work-card:hover .work-image img {
+  transform: scale(1.1); /* Zoom ảnh nhẹ khi hover */
+}
+
+/* Lớp phủ đen (Overlay) và Nút bấm ẩn */
+.work-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 14, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--trans-smooth);
+}
+
+.work-card:hover .work-overlay {
+  opacity: 1; /* Hiện nút và lớp phủ khi hover */
+}
+
+.work-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.work-content h3 {
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+}
+
+.work-content p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.work-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  border-top: 1px solid var(--glass-border);
+  padding-top: 1rem;
+}
+
+/* =========================================
+   CONTACT PAGE
+========================================= */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2rem;
+}
+
+.contact-info,
+.contact-form {
+  padding: 2.5rem;
+}
+
+.contact-info h2,
+.contact-form h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent-glow);
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 0.8rem;
+}
+
+.contact-desc {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* Danh sách thông tin dọc */
+.info-list-vertical {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-list-vertical li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.info-icon {
+  font-size: 1.5rem;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 70, 150, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-value {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: var(--trans-fast);
+  outline: none;
+  cursor: none; /* Dùng custom cursor */
+}
+
+.form-control::placeholder {
+  color: var(--text-muted);
+}
+
+.form-control:focus {
+  border-color: var(--accent-glow);
+  box-shadow: 0 0 10px rgba(255, 70, 150, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}

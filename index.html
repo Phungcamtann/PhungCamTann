@@ -8,12 +8,25 @@
       content="Portfolio of Phung Cam Tan (Damian) - Software Engineering Student & Game Developer"
     />
     <title>Damian | Developer Portfolio</title>
+    <meta property="og:title" content="Damian | Developer Portfolio" />
+    <meta
+      property="og:description"
+      content="Software Engineering Student & Game Developer portfolio featuring unique projects and interactive UI."
+    />
+    <meta property="og:image" content="assets/images/portfolio-preview.jpg" />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0a0a0e" />
 
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;700&display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
     <link rel="stylesheet" href="assets/css/reset.css" />
@@ -21,6 +34,10 @@
     <link rel="stylesheet" href="assets/css/base.css" />
     <link rel="stylesheet" href="assets/css/sidebar.css" />
     <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
   </head>
   <body>
     <div class="custom-cursor"></div>
@@ -36,35 +53,115 @@
         <div class="logo"><span>>_</span> Damian</div>
         <nav class="nav-menu">
           <a href="index.html" class="nav-item active"
-            ><i class="icon-home"></i> Home</a
+            ><i class="fa-solid fa-house"></i> Home</a
           >
           <a href="about.html" class="nav-item"
-            ><i class="icon-user"></i> About</a
+            ><i class="fa-solid fa-user-astronaut"></i> About</a
           >
           <a href="resume.html" class="nav-item"
-            ><i class="icon-file"></i> Resume</a
+            ><i class="fa-solid fa-file-lines"></i> Resume</a
           >
           <a href="works.html" class="nav-item"
-            ><i class="icon-code"></i> Works</a
+            ><i class="fa-solid fa-code"></i> Works</a
           >
           <a href="products.html" class="nav-item"
-            ><i class="icon-box"></i> Products</a
+            ><i class="fa-solid fa-box-open"></i> Products</a
           >
           <a href="contact.html" class="nav-item"
-            ><i class="icon-mail"></i> Contact</a
+            ><i class="fa-solid fa-envelope-open-text"></i> Contact</a
           >
         </nav>
       </aside>
 
       <main class="main-content">
-        <section id="home" class="page-section">
-          <div class="terminal-container glass-panel">
-            <div class="terminal-header">
-              <span class="dot red"></span>
-              <span class="dot yellow"></span>
-              <span class="dot green"></span>
+        <section id="home" class="page-section fade-in">
+          <div class="home-grid">
+            <div class="profile-card glass-panel">
+              <div class="profile-header">
+                <div class="profile-bg"></div>
+                <div class="profile-avatar">
+                  <img
+                    src="assets/images/avatar-placeholder.jpg"
+                    alt="Damian Avatar"
+                  />
+                </div>
+              </div>
+              <div class="profile-info">
+                <h1 class="profile-name">Damian</h1>
+                <p class="profile-role">
+                  Phung Cam Tan <br />
+                  Software Engineering
+                </p>
+
+                <div class="social-links">
+                  <a
+                    href="https://github.com/"
+                    target="_blank"
+                    class="social-icon"
+                    ><i class="fa-brands fa-github"></i
+                  ></a>
+                  <a
+                    href="https://linkedin.com/"
+                    target="_blank"
+                    class="social-icon"
+                    ><i class="fa-brands fa-linkedin-in"></i
+                  ></a>
+                  <a
+                    href="https://web.facebook.com/camtan.phung.1"
+                    target="_blank"
+                    class="social-icon"
+                    ><i class="fa-brands fa-facebook-f"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="profile-actions">
+                <a href="resume.html" class="action-btn">DOWNLOAD CV</a>
+                <a href="contact.html" class="action-btn">CONTACT ME</a>
+              </div>
             </div>
-            <div class="terminal-body" id="terminal-typing"></div>
+
+            <div class="home-about glass-panel">
+              <h2><span class="accent-letter">A</span>bout Me</h2>
+
+              <div class="about-text">
+                <p class="greeting">Hello! I'm Phung Cam Tan (Damian).</p>
+                <p>
+                  A passionate Game Developer and Software Engineering student.
+                  I have rich experience in learning new technologies and
+                  building interactive applications. I love to talk with you
+                  about unique game mechanics and software architecture.
+                </p>
+              </div>
+
+              <ul class="info-list">
+                <li>
+                  <span class="label">AGE</span> <span class="dots"></span>
+                  <span class="value">20</span>
+                </li>
+                <li>
+                  <span class="label">RESIDENCE</span>
+                  <span class="dots"></span> <span class="value">Viet Nam</span>
+                </li>
+                <li>
+                  <span class="label">FREELANCE</span>
+                  <span class="dots"></span>
+                  <span class="value">Available</span>
+                </li>
+                <li>
+                  <span class="label">ADDRESS</span> <span class="dots"></span>
+                  <span class="value">Ho Chi Minh</span>
+                </li>
+              </ul>
+
+              <div class="terminal-container">
+                <div class="terminal-header">
+                  <span class="dot red"></span>
+                  <span class="dot yellow"></span>
+                  <span class="dot green"></span>
+                </div>
+                <div class="terminal-body" id="terminal-typing"></div>
+              </div>
+            </div>
           </div>
         </section>
       </main>
@@ -72,5 +169,8 @@
 
     <script src="assets/js/cursor.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/reveal.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/particles.js"></script>
   </body>
 </html>

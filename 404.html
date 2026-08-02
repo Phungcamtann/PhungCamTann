@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 Not Found | Damian</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+
+    <style>
+      /* CSS nội bộ siêu nhẹ dành riêng cho trang 404 */
+      .error-container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+      }
+      .error-code {
+        font-family: var(--font-heading);
+        font-size: 8rem;
+        color: var(--accent-glow);
+        text-shadow: 0 0 20px rgba(255, 70, 150, 0.5);
+        margin-bottom: 1rem;
+        line-height: 1;
+      }
+      .error-text {
+        font-size: 1.5rem;
+        color: var(--text-primary);
+        margin-bottom: 2rem;
+      }
+      .error-desc {
+        color: var(--text-secondary);
+        margin-bottom: 3rem;
+        max-width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="custom-cursor"></div>
+    <div class="cursor-glow"></div>
+
+    <div class="error-container">
+      <h1 class="error-code glitch-text" data-text="404">404</h1>
+      <h2 class="error-text">>_ page_not_found</h2>
+      <p class="error-desc">
+        The file or directory you are looking for does not exist in this server.
+        It might have been moved or deleted.
+      </p>
+      <a href="index.html" class="btn">Return to Home</a>
+    </div>
+
+    <script src="assets/js/cursor.js"></script>
+  </body>
+</html>

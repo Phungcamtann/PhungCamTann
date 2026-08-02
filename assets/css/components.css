@@ -1,0 +1,80 @@
+/* =========================================
+   BUTTONS (Glow, Ripple, Lift)
+========================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: transparent;
+  border: 1px solid var(--accent-glow);
+  border-radius: 8px;
+  cursor: none; /* Dùng custom cursor */
+  transition: var(--trans-smooth);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Hiệu ứng Hover Lift & Glow */
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 70, 150, 0.4);
+  background: rgba(255, 70, 150, 0.1);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* =========================================
+   SKILL BADGES
+========================================= */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--accent-glow);
+  background: rgba(255, 70, 150, 0.05);
+  border: 1px solid rgba(255, 70, 150, 0.2);
+  border-radius: 20px;
+  transition: var(--trans-fast);
+}
+
+.badge:hover {
+  background: rgba(255, 70, 150, 0.15);
+  border-color: var(--accent-glow);
+}
+
+/* =========================================
+   MOBILE TOGGLE BUTTON (Cho navigation.js)
+========================================= */
+.mobile-toggle-btn {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 45px;
+  height: 45px;
+  z-index: 101;
+  display: none;
+  font-size: 1.5rem;
+  color: var(--accent-glow);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+}
+
+@media (max-width: 992px) {
+  .mobile-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

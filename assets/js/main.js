@@ -4,20 +4,37 @@
 document.addEventListener("DOMContentLoaded", () => {
   const loadingScreen = document.getElementById("loading-screen");
 
-  // Giả lập thời gian tải trang 2 giây
-  setTimeout(() => {
-    // Thêm class để kích hoạt hiệu ứng fade out (visibility & opacity đã setup ở layout.css)
-    loadingScreen.style.opacity = "0";
-    loadingScreen.style.visibility = "hidden";
+  // Nếu trang hiện tại không có loading screen thì bỏ qua
+  if (!loadingScreen) {
+    initTerminalTyping();
+    return;
+  }
 
-    // Đợi transition CSS chạy xong (0.5s) rồi ẩn hẳn khỏi cấu trúc DOM
+  // Kiểm tra xem đã hiển thị loading trong phiên truy cập này chưa
+  if (!sessionStorage.getItem("hasVisited")) {
+    // Lần đầu vào web: Chạy hiệu ứng Loading 2 giây
     setTimeout(() => {
-      loadingScreen.style.display = "none";
+      loadingScreen.style.opacity = "0";
+      loadingScreen.style.visibility = "hidden";
 
-      // Khởi động hiệu ứng gõ chữ sau khi loading kết thúc
-      initTerminalTyping();
-    }, 500);
-  }, 2000);
+      // Đợi transition CSS chạy xong (0.5s) rồi ẩn hẳn
+      setTimeout(() => {
+        loadingScreen.style.display = "none";
+
+        // Đánh dấu là đã xem loading
+        sessionStorage.setItem("hasVisited", "true");
+
+        // Khởi động hiệu ứng gõ chữ
+        initTerminalTyping();
+      }, 500);
+    }, 2000);
+  } else {
+    // Các lần sau (chuyển tab): Ẩn ngay lập tức loading screen
+    loadingScreen.style.display = "none";
+
+    // Chạy luôn hiệu ứng gõ chữ ngay lập tức
+    initTerminalTyping();
+  }
 });
 
 // =========================================
@@ -40,8 +57,8 @@ function initTerminalTyping() {
   let currentLineElement = null;
 
   // Thiết lập tốc độ (ms)
-  const typingSpeed = 50; // Tốc độ gõ từng ký tự
-  const lineDelay = 600; // Thời gian nghỉ giữa các dòng
+  const typingSpeed = 20; // Tốc độ gõ từng ký tự
+  const lineDelay = 300; // Thời gian nghỉ giữa các dòng
 
   function typeCharacter() {
     // Nếu bắt đầu một dòng mới, tạo một thẻ div mới

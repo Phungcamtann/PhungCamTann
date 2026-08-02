@@ -9,11 +9,19 @@
 
 .main-content {
   flex: 1;
-  margin-left: 260px; /* Nhường chỗ cho Sidebar cố định */
-  padding: 2rem 4rem;
+  margin-left: 260px; /* Giữ lại khoảng trống nhường cho Sidebar */
+  /* Đổi padding tĩnh (4rem) thành % để 2 bên lề tự động thở đều theo màn hình */
+  padding: 4rem 5%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* KHỐI NÀY LÀ CHÌA KHÓA ĐỂ CĂN GIỮA */
+.page-section {
+  width: 100%;
+  max-width: 1150px; /* Khóa độ rộng tối đa, giúp các Card không bị bè ngang quá mức */
+  margin: 0 auto; /* Tự động chia đều khoảng trống thừa sang 2 bên trái/phải */
 }
 
 @media (max-width: 992px) {

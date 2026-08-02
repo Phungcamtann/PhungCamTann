@@ -10,9 +10,19 @@
   --text-muted: #555566;
 
   /* Glassmorphism */
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.05);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-bg: rgba(
+    12,
+    10,
+    16,
+    0.75
+  ); /* Nền kính tối và đặc hơn để che bớt hạt chuyển động */
+  --glass-border: rgba(
+    255,
+    70,
+    150,
+    0.15
+  ); /* Đổi viền sang hơi hường Neon nhẹ để tách biệt với nền đen */
+  --glass-shadow: 0 15px 40px rgba(0, 0, 0, 0.9); /* Đổ bóng cực gắt để đẩy khối nổi bồng lên khỏi background */
 
   /* Fonts */
   --font-heading: "JetBrains Mono", monospace;

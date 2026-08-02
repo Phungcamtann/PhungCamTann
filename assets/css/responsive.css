@@ -1,0 +1,47 @@
+/* Responsive cho trang Home */
+@media (max-width: 1200px) {
+  .home-grid {
+    grid-template-columns: 300px 1fr;
+  }
+  .info-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- TABLET & MOBILE (Max 992px) --- */
+@media (max-width: 992px) {
+  /* Home Page */
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Resume Page */
+  .resume-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  /* Contact Page */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* --- MOBILE (Max 576px) --- */
+@media (max-width: 576px) {
+  /* Ép Works Grid về 1 cột trên Mobile nhỏ */
+  .works-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-image {
+    height: 180px;
+  }
+}
