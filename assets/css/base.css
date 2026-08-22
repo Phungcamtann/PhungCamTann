@@ -1,16 +1,5 @@
-/* Ẩn con trỏ mặc định trên desktop */
-@media (pointer: fine) {
-  body {
-    cursor: none;
-  }
-  a,
-  button {
-    cursor: none;
-  }
-}
-
 body {
-  background-color: #050508; /* Màu đen sâu vũ trụ */
+  background-color: var(--bg-deep);
   color: var(--text-primary);
   font-family: var(--font-body);
   line-height: 1.6;
@@ -28,58 +17,6 @@ h6,
   font-weight: 700;
 }
 
-/* Utilities cho Glassmorphism */
-.glass-panel {
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
-  border-radius: 16px;
-  position: relative;
-  z-index: 1;
-}
-
-/* =========================================
-   CUSTOM CURSOR
-========================================= */
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 8px;
-  /* Căn giữa tâm chuột */
-  margin-top: -4px;
-  margin-left: -4px;
-  background-color: var(--accent-glow);
-  border-radius: 50%;
-  pointer-events: none; /* Cực kỳ quan trọng để click xuyên qua */
-  z-index: 9999;
-}
-
-.cursor-glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 30px;
-  height: 30px;
-  border: 1px solid var(--accent-glow);
-  background-color: rgba(255, 70, 150, 0.15);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transition:
-    background-color var(--trans-fast),
-    transform 0.1s ease-out;
-}
-
-/* Hiệu ứng khi hover vào các thẻ a, button (Class .active được JS thêm vào) */
-.cursor-glow.active {
-  background-color: rgba(255, 70, 150, 0.4);
-  border-color: #fff;
-}
-
 /* =========================================
    CUSTOM SCROLLBAR
 ========================================= */
@@ -93,7 +30,7 @@ h6,
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 70, 150, 0.3); /* Màu hường Neon dạng trong suốt */
+  background: rgba(var(--accent-rgb), 0.3);
   border-radius: 10px; /* Bo tròn các góc */
   transition: var(--trans-fast);
 }

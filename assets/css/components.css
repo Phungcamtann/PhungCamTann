@@ -1,41 +1,81 @@
 /* =========================================
    BUTTONS (Glow, Ripple, Lift)
 ========================================= */
-.btn {
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: calc(var(--z-loader) + 1);
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  background: var(--bg-main);
+  border: 2px solid var(--accent-glow);
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.4);
+}
+
+.damian-btn:focus-visible,
+.nav-item:focus-visible,
+.social-icon:focus-visible,
+.action-btn:focus-visible,
+.info-value:is(a):focus-visible,
+.damian-form-control:focus-visible,
+.skip-link:focus-visible {
+  outline: 2px solid var(--accent-glow);
+  outline-offset: 3px;
+}
+
+.damian-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   padding: 0.8rem 1.5rem;
+  min-height: 44px;
   font-family: var(--font-heading);
   font-size: 1rem;
   font-weight: 700;
   color: var(--text-primary);
   background: transparent;
   border: 1px solid var(--accent-glow);
-  border-radius: 8px;
-  cursor: none; /* Dùng custom cursor */
+  border-radius: var(--radius-md);
   transition: var(--trans-smooth);
   position: relative;
   overflow: hidden;
-  z-index: 1;
+  z-index: var(--z-content);
 }
 
 /* Hiệu ứng Hover Lift & Glow */
-.btn:hover {
+.damian-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(255, 70, 150, 0.4);
-  background: rgba(255, 70, 150, 0.1);
+  box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.4);
+  background: rgba(var(--accent-rgb), 0.1);
 }
 
-.btn:active {
+.damian-btn:active {
   transform: translateY(0);
+}
+
+.damian-btn:disabled,
+.damian-btn[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.55;
+  pointer-events: none;
+  transform: none;
+  box-shadow: none;
+}
+
+.damian-btn:disabled:hover,
+.damian-btn[aria-disabled="true"]:hover {
+  background: transparent;
+  transform: none;
+  box-shadow: none;
 }
 
 /* =========================================
    SKILL BADGES
 ========================================= */
-.badge {
+.skill-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -43,38 +83,188 @@
   font-family: var(--font-heading);
   font-size: 0.85rem;
   color: var(--accent-glow);
-  background: rgba(255, 70, 150, 0.05);
-  border: 1px solid rgba(255, 70, 150, 0.2);
-  border-radius: 20px;
+  background: rgba(var(--accent-rgb), 0.05);
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
+  border-radius: var(--radius-pill);
   transition: var(--trans-fast);
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
-.badge:hover {
-  background: rgba(255, 70, 150, 0.15);
+.skill-badge:hover {
+  background: rgba(var(--accent-rgb), 0.15);
   border-color: var(--accent-glow);
 }
 
 /* =========================================
-   MOBILE TOGGLE BUTTON (Cho navigation.js)
+   GLASS PANEL
 ========================================= */
-.mobile-toggle-btn {
-  position: fixed;
-  top: 1.5rem;
-  right: 1.5rem;
-  width: 45px;
-  height: 45px;
-  z-index: 101;
-  display: none;
-  font-size: 1.5rem;
-  color: var(--accent-glow);
+:where(.glass-panel) {
+  position: relative;
+  z-index: var(--z-content);
+  background: var(--glass-bg);
   border: 1px solid var(--glass-border);
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
 }
 
-@media (max-width: 992px) {
-  .mobile-toggle-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+/* =========================================
+   CUSTOM CURSOR
+========================================= */
+.custom-cursor {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  margin-left: -4px;
+  background-color: var(--accent-glow);
+  border-radius: var(--radius-round);
+  pointer-events: none;
+  z-index: var(--z-cursor);
+}
+
+.cursor-glow {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--accent-glow);
+  background-color: rgba(var(--accent-rgb), 0.15);
+  border-radius: var(--radius-round);
+  pointer-events: none;
+  z-index: var(--z-cursor-glow);
+  transition:
+    background-color var(--trans-fast),
+    transform 0.1s ease-out;
+}
+
+.cursor-glow.active {
+  background-color: rgba(var(--accent-rgb), 0.4);
+  border-color: var(--color-white);
+}
+
+.custom-cursor-enabled .custom-cursor,
+.custom-cursor-enabled .cursor-glow {
+  display: block;
+  will-change: transform;
+}
+
+/* =========================================
+   SECTION HEADING
+========================================= */
+.section-header {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.section-title span {
+  color: var(--accent-glow);
+}
+
+.title-line {
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent-glow);
+  border-radius: var(--radius-xs);
+  box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.5);
+}
+
+/* =========================================
+   LOADER AND TERMINAL
+========================================= */
+.glitch-text {
+  position: relative;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 11vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: clamp(4px, 2vw, 8px);
+  text-shadow: 0 0 15px rgba(var(--accent-rgb), 0.6);
+}
+
+.loader-progress {
+  width: min(250px, calc(100vw - 3rem));
+  height: 2px;
+  overflow: hidden;
+  background-color: var(--glass-border);
+  border-radius: var(--radius-xs);
+}
+
+.loader-progress-bar {
+  width: 0%;
+  height: 100%;
+  background-color: var(--accent-glow);
+  box-shadow: 0 0 10px var(--accent-glow);
+  animation: loadingSimulate 2s cubic-bezier(0.8, 0, 0.2, 1) forwards;
+}
+
+.terminal-line {
+  margin-bottom: 0.6rem;
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  overflow-wrap: anywhere;
+}
+
+.terminal-container,
+.terminal-body {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.terminal-body {
+  overflow-x: auto;
+}
+
+.blinking-cursor {
+  color: var(--accent-glow);
+  animation: blink 1s step-end infinite;
+}
+
+/* =========================================
+   FORM CONTROLS
+========================================= */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.damian-form-control {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: var(--trans-fast);
+}
+
+.damian-form-control::placeholder {
+  color: var(--text-muted);
+}
+
+.damian-form-control:focus {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent-glow);
+  box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.2);
+}
+
+textarea.damian-form-control {
+  min-height: 120px;
+  resize: vertical;
 }

@@ -5,16 +5,19 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 260px;
+  width: var(--sidebar-width);
   height: 100vh;
+  height: 100dvh;
   padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  z-index: 100;
+  z-index: var(--z-sidebar);
   /* Kế thừa từ class .glass-panel nhưng ta set thêm border phải */
   border-right: 1px solid var(--glass-border);
-  border-radius: 0; /* Reset border radius của glass-panel mặc định */
+  border-radius: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .logo {
@@ -26,7 +29,7 @@
 
 .logo span {
   color: var(--accent-glow);
-  text-shadow: 0 0 10px rgba(255, 70, 150, 0.4);
+  text-shadow: 0 0 10px rgba(var(--accent-rgb), 0.4);
 }
 
 .nav-menu {
@@ -44,7 +47,7 @@
   align-items: center;
   gap: 1rem;
   padding: 0.8rem 1rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   transition: var(--trans-smooth);
   position: relative;
   overflow: hidden;
@@ -53,8 +56,8 @@
 /* Hiệu ứng Hover Glow */
 .nav-item:hover {
   color: var(--text-primary);
-  background: rgba(255, 70, 150, 0.05);
-  text-shadow: 0 0 8px rgba(255, 70, 150, 0.5);
+  background: rgba(var(--accent-rgb), 0.05);
+  text-shadow: 0 0 8px rgba(var(--accent-rgb), 0.5);
 }
 
 /* Active Indicator */
@@ -76,15 +79,90 @@
   box-shadow: 0 0 10px var(--accent-glow);
 }
 
-/* Mobile Drawer (Sẽ kích hoạt bằng JS sau) */
-@media (max-width: 992px) {
-  .sidebar {
-    transform: translateX(-100%);
-    transition: transform var(--trans-smooth);
-    width: 280px;
-    background: rgba(10, 10, 14, 0.95); /* Tối hơn chút trên mobile */
-  }
-  .sidebar.open {
-    transform: translateX(0);
-  }
+/* Mobile Offcanvas trigger */
+.mobile-nav-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 45px;
+  height: 45px;
+  z-index: var(--z-mobile-toggle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--accent-glow);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+}
+
+.mobile-nav-toggle:hover,
+.mobile-nav-toggle:focus-visible {
+  color: var(--text-primary);
+  border-color: var(--accent-glow);
+  box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.35);
+  outline: 2px solid var(--accent-glow);
+  outline-offset: 3px;
+}
+
+/* =========================================
+   BOOTSTRAP OFFCANVAS — MOBILE NAVIGATION
+========================================= */
+.damian-offcanvas {
+  --bs-offcanvas-width: min(280px, calc(100vw - 1rem));
+  color: var(--text-primary);
+  background: rgba(10, 10, 14, 0.97);
+  border-right: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+.damian-offcanvas .offcanvas-header {
+  padding: 1.5rem 1.25rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.damian-offcanvas-title {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.damian-offcanvas-title span {
+  color: var(--accent-glow);
+  text-shadow: 0 0 10px rgba(var(--accent-rgb), 0.4);
+}
+
+.damian-offcanvas-close {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: var(--accent-glow);
+  background: rgba(var(--accent-rgb), 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  font-size: 1.25rem;
+}
+
+.damian-offcanvas-close:hover,
+.damian-offcanvas-close:focus-visible,
+.damian-offcanvas .nav-item:focus-visible {
+  color: var(--text-primary);
+  border-color: var(--accent-glow);
+  box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.35);
+  outline: 2px solid var(--accent-glow);
+  outline-offset: 3px;
+}
+
+.damian-offcanvas .offcanvas-body {
+  padding: 1.5rem 1.25rem;
+  overflow-y: auto;
 }

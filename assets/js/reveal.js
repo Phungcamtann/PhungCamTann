@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const reveals = document.querySelectorAll(".reveal");
 
+  if (!reveals.length) return;
+
   const revealOptions = {
     threshold: 0.15, // Kích hoạt khi 15% phần tử xuất hiện
     rootMargin: "0px 0px -50px 0px",

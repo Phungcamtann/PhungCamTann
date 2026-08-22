@@ -5,19 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Portfolio of Phung Cam Tan (Damian) - Software Engineering Student & Game Developer"
+      content="Portfolio of Phung Cam Tan (Damian), a Software Engineering student and Game Developer, featuring skills, selected work, and interactive web experiences."
     />
-    <title>Damian | Developer Portfolio</title>
-    <meta property="og:title" content="Damian | Developer Portfolio" />
+    <meta name="author" content="Phung Cam Tan" />
+    <title>Damian | Software Engineering Portfolio</title>
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Damian | Software Engineering Portfolio"
+    />
     <meta
       property="og:description"
-      content="Software Engineering Student & Game Developer portfolio featuring unique projects and interactive UI."
+      content="Portfolio of Phung Cam Tan (Damian), a Software Engineering student and Game Developer, featuring skills, selected work, and interactive web experiences."
     />
-    <meta property="og:image" content="assets/images/portfolio-preview.jpg" />
-    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Damian | Software Engineering Portfolio"
+    />
+    <meta
+      name="twitter:description"
+      content="Portfolio of Phung Cam Tan (Damian), a Software Engineering student and Game Developer, featuring skills, selected work, and interactive web experiences."
+    />
     <meta name="theme-color" content="#0a0a0e" />
+    <script>
+      document.documentElement.classList.add("js-enabled");
+      window.setTimeout(() => {
+        document.documentElement.classList.add("loader-failsafe");
+      }, 4000);
+    </script>
 
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -29,7 +46,12 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
-    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="assets/css/variables.css" />
     <link rel="stylesheet" href="assets/css/base.css" />
     <link rel="stylesheet" href="assets/css/sidebar.css" />
@@ -40,126 +62,214 @@
     <link rel="stylesheet" href="assets/css/responsive.css" />
   </head>
   <body>
-    <div class="custom-cursor"></div>
-    <div class="cursor-glow"></div>
+    <a class="skip-link visually-hidden-focusable" href="#main-content"
+      >Skip to main content</a
+    >
+    <div class="custom-cursor" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
 
-    <div id="loading-screen">
-      <h1 class="glitch-text" data-text="DAMIAN">DAMIAN</h1>
-      <div class="progress-bar"><div class="progress"></div></div>
+    <div id="loading-screen" aria-hidden="true">
+      <div class="glitch-text" data-text="DAMIAN">DAMIAN</div>
+      <div class="loader-progress"><div class="loader-progress-bar"></div></div>
+    </div>
+
+    <button
+      type="button"
+      class="mobile-nav-toggle glass-panel d-lg-none"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#mobileNavigation"
+      aria-controls="mobileNavigation"
+      aria-label="Open navigation menu"
+    >
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
+
+    <div
+      class="offcanvas offcanvas-start damian-offcanvas"
+      tabindex="-1"
+      id="mobileNavigation"
+      aria-labelledby="mobileNavigationLabel"
+    >
+      <div class="offcanvas-header">
+        <div class="damian-offcanvas-title" id="mobileNavigationLabel">
+          <span>&gt;_</span> Damian
+        </div>
+        <button
+          type="button"
+          class="damian-offcanvas-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close navigation menu"
+        >
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="offcanvas-body">
+        <nav class="nav-menu" aria-label="Mobile navigation">
+          <a href="index.html" class="nav-item active" aria-current="page"
+            ><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a
+          >
+          <a href="page/about.html" class="nav-item"
+            ><i class="fa-solid fa-user-astronaut" aria-hidden="true"></i>
+            About</a
+          >
+          <a href="page/resume.html" class="nav-item"
+            ><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Resume</a
+          >
+          <a href="page/works.html" class="nav-item"
+            ><i class="fa-solid fa-code" aria-hidden="true"></i> Works</a
+          >
+          <a href="page/products.html" class="nav-item"
+            ><i class="fa-solid fa-box-open" aria-hidden="true"></i> Products</a
+          >
+          <a href="page/contact.html" class="nav-item"
+            ><i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
+            Contact</a
+          >
+        </nav>
+      </div>
     </div>
 
     <div class="app-container">
-      <aside class="sidebar glass-panel">
+      <aside class="sidebar glass-panel d-none d-lg-flex">
         <div class="logo"><span>>_</span> Damian</div>
-        <nav class="nav-menu">
-          <a href="index.html" class="nav-item active"
-            ><i class="fa-solid fa-house"></i> Home</a
+        <nav class="nav-menu" aria-label="Primary navigation">
+          <a href="index.html" class="nav-item active" aria-current="page"
+            ><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a
           >
-          <a href="about.html" class="nav-item"
-            ><i class="fa-solid fa-user-astronaut"></i> About</a
+          <a href="page/about.html" class="nav-item"
+            ><i class="fa-solid fa-user-astronaut" aria-hidden="true"></i>
+            About</a
           >
-          <a href="resume.html" class="nav-item"
-            ><i class="fa-solid fa-file-lines"></i> Resume</a
+          <a href="page/resume.html" class="nav-item"
+            ><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Resume</a
           >
-          <a href="works.html" class="nav-item"
-            ><i class="fa-solid fa-code"></i> Works</a
+          <a href="page/works.html" class="nav-item"
+            ><i class="fa-solid fa-code" aria-hidden="true"></i> Works</a
           >
-          <a href="products.html" class="nav-item"
-            ><i class="fa-solid fa-box-open"></i> Products</a
+          <a href="page/products.html" class="nav-item"
+            ><i class="fa-solid fa-box-open" aria-hidden="true"></i> Products</a
           >
-          <a href="contact.html" class="nav-item"
-            ><i class="fa-solid fa-envelope-open-text"></i> Contact</a
+          <a href="page/contact.html" class="nav-item"
+            ><i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
+            Contact</a
           >
         </nav>
       </aside>
 
-      <main class="main-content">
+      <main class="main-content" id="main-content" tabindex="-1">
         <section id="home" class="page-section fade-in">
-          <div class="home-grid">
-            <div class="profile-card glass-panel">
-              <div class="profile-header">
-                <div class="profile-bg"></div>
-                <div class="profile-avatar">
-                  <img
-                    src="assets/images/avatar-placeholder.jpg"
-                    alt="Damian Avatar"
-                  />
+          <div class="container">
+            <div class="row gx-0 gy-4 gx-lg-4 align-items-start">
+              <div class="col-12 col-lg-5 col-xl-4">
+                <div class="profile-card glass-panel">
+                  <div class="profile-header">
+                    <div class="profile-bg"></div>
+                    <div class="profile-avatar">
+                      <img
+                        src="assets/images/avatar-placeholder.jpg"
+                        alt="Portrait of Phung Cam Tan, also known as Damian"
+                        width="960"
+                        height="1280"
+                        decoding="async"
+                      />
+                    </div>
+                  </div>
+                  <div class="profile-info">
+                    <h1 class="profile-name">Damian</h1>
+                    <p class="profile-role">
+                      Phung Cam Tan <br />
+                      Software Engineering
+                    </p>
+
+                    <div class="social-links">
+                      <a
+                        href="https://github.com/Phungcamtann"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-icon"
+                        aria-label="GitHub"
+                        ><i class="fa-brands fa-github" aria-hidden="true"></i
+                      ></a>
+                      <span
+                        class="social-icon social-icon--unavailable"
+                        role="img"
+                        aria-label="LinkedIn profile unavailable"
+                        title="LinkedIn profile unavailable"
+                        ><i
+                          class="fa-brands fa-linkedin-in"
+                          aria-hidden="true"
+                        ></i
+                      ></span>
+                      <a
+                        href="https://web.facebook.com/camtan.phung.1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="social-icon"
+                        aria-label="Facebook"
+                        ><i
+                          class="fa-brands fa-facebook-f"
+                          aria-hidden="true"
+                        ></i
+                      ></a>
+                    </div>
+                  </div>
+                  <div class="profile-actions">
+                    <a href="page/resume.html" class="action-btn"
+                      >VIEW RESUME</a
+                    >
+                    <a href="page/contact.html" class="action-btn"
+                      >CONTACT ME</a
+                    >
+                  </div>
                 </div>
               </div>
-              <div class="profile-info">
-                <h1 class="profile-name">Damian</h1>
-                <p class="profile-role">
-                  Phung Cam Tan <br />
-                  Software Engineering
-                </p>
 
-                <div class="social-links">
-                  <a
-                    href="https://github.com/Phungcamtann"
-                    target="_blank"
-                    class="social-icon"
-                    ><i class="fa-brands fa-github"></i
-                  ></a>
-                  <a
-                    href="https://linkedin.com/"
-                    target="_blank"
-                    class="social-icon"
-                    ><i class="fa-brands fa-linkedin-in"></i
-                  ></a>
-                  <a
-                    href="https://web.facebook.com/camtan.phung.1"
-                    target="_blank"
-                    class="social-icon"
-                    ><i class="fa-brands fa-facebook-f"></i
-                  ></a>
+              <div class="col-12 col-lg-7 col-xl-8">
+                <div class="home-about glass-panel">
+                  <h2><span class="accent-letter">A</span>bout Me</h2>
+
+                  <div class="about-text">
+                    <p class="greeting">Hello! I'm Phung Cam Tan (Damian).</p>
+                    <p>
+                      A passionate Game Developer and Software Engineering
+                      student. I have rich experience in learning new
+                      technologies and building interactive applications. I love
+                      to talk with you about unique game mechanics and software
+                      architecture.
+                    </p>
+                  </div>
+
+                  <ul class="info-list">
+                    <li>
+                      <span class="label">AGE</span> <span class="dots"></span>
+                      <span class="value">20</span>
+                    </li>
+                    <li>
+                      <span class="label">RESIDENCE</span>
+                      <span class="dots"></span>
+                      <span class="value">Viet Nam</span>
+                    </li>
+                    <li>
+                      <span class="label">FREELANCE</span>
+                      <span class="dots"></span>
+                      <span class="value">Available</span>
+                    </li>
+                    <li>
+                      <span class="label">ADDRESS</span>
+                      <span class="dots"></span>
+                      <span class="value">Ho Chi Minh</span>
+                    </li>
+                  </ul>
+
+                  <div class="terminal-container">
+                    <div class="terminal-header">
+                      <span class="dot red" aria-hidden="true"></span>
+                      <span class="dot yellow" aria-hidden="true"></span>
+                      <span class="dot green" aria-hidden="true"></span>
+                    </div>
+                    <div class="terminal-body" id="terminal-typing"></div>
+                  </div>
                 </div>
-              </div>
-              <div class="profile-actions">
-                <a href="resume.html" class="action-btn">DOWNLOAD CV</a>
-                <a href="contact.html" class="action-btn">CONTACT ME</a>
-              </div>
-            </div>
-
-            <div class="home-about glass-panel">
-              <h2><span class="accent-letter">A</span>bout Me</h2>
-
-              <div class="about-text">
-                <p class="greeting">Hello! I'm Phung Cam Tan (Damian).</p>
-                <p>
-                  A passionate Game Developer and Software Engineering student.
-                  I have rich experience in learning new technologies and
-                  building interactive applications. I love to talk with you
-                  about unique game mechanics and software architecture.
-                </p>
-              </div>
-
-              <ul class="info-list">
-                <li>
-                  <span class="label">AGE</span> <span class="dots"></span>
-                  <span class="value">20</span>
-                </li>
-                <li>
-                  <span class="label">RESIDENCE</span>
-                  <span class="dots"></span> <span class="value">Viet Nam</span>
-                </li>
-                <li>
-                  <span class="label">FREELANCE</span>
-                  <span class="dots"></span>
-                  <span class="value">Available</span>
-                </li>
-                <li>
-                  <span class="label">ADDRESS</span> <span class="dots"></span>
-                  <span class="value">Ho Chi Minh</span>
-                </li>
-              </ul>
-
-              <div class="terminal-container">
-                <div class="terminal-header">
-                  <span class="dot red"></span>
-                  <span class="dot yellow"></span>
-                  <span class="dot green"></span>
-                </div>
-                <div class="terminal-body" id="terminal-typing"></div>
               </div>
             </div>
           </div>
@@ -167,9 +277,15 @@
       </main>
     </div>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
     <script src="assets/js/cursor.js"></script>
+    <script src="assets/js/loader.js"></script>
+    <script src="assets/js/typing.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/reveal.js"></script>
     <script src="assets/js/navigation.js"></script>
     <script src="assets/js/particles.js"></script>
   </body>

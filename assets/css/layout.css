@@ -4,15 +4,18 @@
 .app-container {
   display: flex;
   min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
 }
 
 .main-content {
   flex: 1;
-  margin-left: 260px; /* Giữ lại khoảng trống nhường cho Sidebar */
+  min-width: 0;
+  margin-left: var(--sidebar-width);
   /* Đổi padding tĩnh (4rem) thành % để 2 bên lề tự động thở đều theo màn hình */
   padding: 4rem 5%;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
 }
@@ -20,15 +23,8 @@
 /* KHỐI NÀY LÀ CHÌA KHÓA ĐỂ CĂN GIỮA */
 .page-section {
   width: 100%;
-  max-width: 1150px; /* Khóa độ rộng tối đa, giúp các Card không bị bè ngang quá mức */
+  max-width: var(--content-max-width);
   margin: 0 auto; /* Tự động chia đều khoảng trống thừa sang 2 bên trái/phải */
-}
-
-@media (max-width: 992px) {
-  .main-content {
-    margin-left: 0;
-    padding: 2rem 1.5rem;
-  }
 }
 
 /* =========================================
@@ -38,83 +34,24 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
+  height: 100dvh;
   background-color: var(--bg-main);
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: var(--z-loader);
   transition:
     opacity 0.5s ease,
     visibility 0.5s ease;
 }
 
-.glitch-text {
-  font-family: var(--font-heading);
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: 8px;
-  position: relative;
-  text-shadow: 0 0 15px rgba(255, 70, 150, 0.6);
-  margin-bottom: 2rem;
+.js-enabled #loading-screen {
+  display: flex;
 }
 
-.progress-bar {
-  width: 250px;
-  height: 2px;
-  background-color: var(--glass-border);
-  overflow: hidden;
-  border-radius: 2px;
-}
-
-.progress {
-  width: 0%;
-  height: 100%;
-  background-color: var(--accent-glow);
-  box-shadow: 0 0 10px var(--accent-glow);
-  /* Giả lập thời gian load trang trong 2 giây */
-  animation: loadingSimulate 2s cubic-bezier(0.8, 0, 0.2, 1) forwards;
-}
-
-@keyframes loadingSimulate {
-  0% {
-    width: 0%;
-  }
-  40% {
-    width: 40%;
-  }
-  70% {
-    width: 75%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-/* =========================================
-   TERMINAL TYPING ANIMATION
-========================================= */
-.terminal-line {
-  font-family: var(--font-heading);
-  font-size: 1.1rem;
-  margin-bottom: 0.6rem;
-  color: var(--text-secondary);
-}
-
-.blinking-cursor {
-  animation: blink 1s step-end infinite;
-  color: var(--accent-glow);
-}
-
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
+.loader-failsafe #loading-screen {
+  display: none;
 }

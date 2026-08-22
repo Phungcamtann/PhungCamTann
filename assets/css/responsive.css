@@ -1,47 +1,61 @@
-/* Responsive cho trang Home */
-@media (max-width: 1200px) {
-  .home-grid {
-    grid-template-columns: 300px 1fr;
+/* Custom cursor is active only for fine pointers. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .custom-cursor-enabled body,
+  .custom-cursor-enabled a,
+  .custom-cursor-enabled button,
+  .custom-cursor-enabled input,
+  .custom-cursor-enabled textarea {
+    cursor: none;
   }
+}
+
+@media (max-width: 991.98px) {
+  .main-content {
+    margin-left: 0;
+    padding: 5.5rem 1.5rem 2rem;
+  }
+}
+
+/* Responsive cho trang Home */
+@media (max-width: 1199.98px) {
   .info-list {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
 }
 
-@media (max-width: 992px) {
-  .home-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* --- TABLET & MOBILE (Max 992px) --- */
-@media (max-width: 992px) {
-  /* Home Page */
-  .home-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* Resume Page */
-  .resume-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  /* Contact Page */
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
-
 /* --- MOBILE (Max 576px) --- */
-@media (max-width: 576px) {
-  /* Ép Works Grid về 1 cột trên Mobile nhỏ */
-  .works-grid {
-    grid-template-columns: 1fr;
+@media (max-width: 575.98px) {
+  .main-content {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .about-bio,
+  .about-skills,
+  .home-about,
+  .contact-info,
+  .contact-form {
+    padding: 1.5rem;
+  }
+
+  .profile-info {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .info-list-vertical li {
+    align-items: flex-start;
   }
 
   .work-image {
     height: 180px;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .work-overlay {
+    opacity: 1;
+    background: rgba(10, 10, 14, 0.65);
   }
 }

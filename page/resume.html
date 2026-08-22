@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio resume page presenting Damian's education and development experience sections."
+    />
+    <meta name="author" content="Phung Cam Tan" />
+    <title>Resume | Damian</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Resume | Damian" />
+    <meta
+      property="og:description"
+      content="Portfolio resume page presenting Damian's education and development experience sections."
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Resume | Damian" />
+    <meta
+      name="twitter:description"
+      content="Portfolio resume page presenting Damian's education and development experience sections."
+    />
+    <meta name="theme-color" content="#0a0a0e" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../assets/css/variables.css" />
+    <link rel="stylesheet" href="../assets/css/base.css" />
+    <link rel="stylesheet" href="../assets/css/sidebar.css" />
+    <link rel="stylesheet" href="../assets/css/layout.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <link rel="stylesheet" href="../assets/css/animations.css" />
+    <link rel="stylesheet" href="../assets/css/pages.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+  </head>
+  <body>
+    <a class="skip-link visually-hidden-focusable" href="#main-content"
+      >Skip to main content</a
+    >
+    <div class="custom-cursor" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <button
+      type="button"
+      class="mobile-nav-toggle glass-panel d-lg-none"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#mobileNavigation"
+      aria-controls="mobileNavigation"
+      aria-label="Open navigation menu"
+    >
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
+    <div
+      class="offcanvas offcanvas-start damian-offcanvas"
+      tabindex="-1"
+      id="mobileNavigation"
+      aria-labelledby="mobileNavigationLabel"
+    >
+      <div class="offcanvas-header">
+        <div class="damian-offcanvas-title" id="mobileNavigationLabel">
+          <span>&gt;_</span> Damian
+        </div>
+        <button
+          type="button"
+          class="damian-offcanvas-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close navigation menu"
+        >
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="offcanvas-body">
+        <nav class="nav-menu" aria-label="Mobile navigation">
+          <a href="../index.html" class="nav-item"
+            ><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a
+          >
+          <a href="about.html" class="nav-item"
+            ><i class="fa-solid fa-user-astronaut" aria-hidden="true"></i>
+            About</a
+          >
+          <a href="resume.html" class="nav-item active" aria-current="page"
+            ><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Resume</a
+          >
+          <a href="works.html" class="nav-item"
+            ><i class="fa-solid fa-code" aria-hidden="true"></i> Works</a
+          >
+          <a href="products.html" class="nav-item"
+            ><i class="fa-solid fa-box-open" aria-hidden="true"></i> Products</a
+          >
+          <a href="contact.html" class="nav-item"
+            ><i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
+            Contact</a
+          >
+        </nav>
+      </div>
+    </div>
+
+    <div class="app-container">
+      <aside class="sidebar glass-panel d-none d-lg-flex">
+        <div class="logo"><span>>_</span> Damian</div>
+        <nav class="nav-menu" aria-label="Primary navigation">
+          <a href="../index.html" class="nav-item"
+            ><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a
+          >
+          <a href="about.html" class="nav-item"
+            ><i class="fa-solid fa-user-astronaut" aria-hidden="true"></i>
+            About</a
+          >
+          <a href="resume.html" class="nav-item active" aria-current="page"
+            ><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Resume</a
+          >
+          <a href="works.html" class="nav-item"
+            ><i class="fa-solid fa-code" aria-hidden="true"></i> Works</a
+          >
+          <a href="products.html" class="nav-item"
+            ><i class="fa-solid fa-box-open" aria-hidden="true"></i> Products</a
+          >
+          <a href="contact.html" class="nav-item"
+            ><i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>
+            Contact</a
+          >
+        </nav>
+      </aside>
+
+      <main class="main-content" id="main-content" tabindex="-1">
+        <section id="resume" class="page-section fade-in">
+          <div class="container">
+            <div class="section-header">
+              <h1 class="section-title">My <span>Resume</span></h1>
+              <div class="title-line"></div>
+            </div>
+
+            <div class="row gx-0 gy-5 gx-lg-5">
+              <div class="col-12 col-lg-6 resume-column">
+                <h2 class="column-title">>_ education</h2>
+                <div class="timeline">
+                  <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="resume-card glass-panel">
+                      <span class="resume-date">202X - Present</span>
+                      <h3 class="resume-role">Software Engineering Student</h3>
+                      <h4 class="resume-company">University Name</h4>
+                      <p class="resume-desc" lang="vi">
+                        Mô tả ngắn gọn về ngành học, đồ án nổi bật hoặc các môn
+                        chuyên ngành đã hoàn thành. (Chờ update sau...)
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="resume-card glass-panel">
+                      <span class="resume-date">201X - 202X</span>
+                      <h3 class="resume-role">High School Degree</h3>
+                      <h4 class="resume-company">High School Name</h4>
+                      <p class="resume-desc" lang="vi">
+                        Thông tin học vấn trung học phổ thông. (Chờ update
+                        sau...)
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-lg-6 resume-column">
+                <h2 class="column-title">>_ experience</h2>
+                <div class="timeline">
+                  <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="resume-card glass-panel">
+                      <span class="resume-date">202X - Present</span>
+                      <h3 class="resume-role">Indie Game Developer</h3>
+                      <h4 class="resume-company">Self-employed</h4>
+                      <p class="resume-desc" lang="vi">
+                        Phát triển các dự án game cá nhân sử dụng Unity và C#.
+                        Nghiên cứu logic game và UX/UI. (Chờ update sau...)
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="resume-card glass-panel">
+                      <span class="resume-date">YYYY - YYYY</span>
+                      <h3 class="resume-role">Freelance Developer</h3>
+                      <h4 class="resume-company">Various Clients</h4>
+                      <p class="resume-desc" lang="vi">
+                        Tham gia phát triển các ứng dụng nhỏ, code tool tự động
+                        hóa. (Chờ update sau...)
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../assets/js/cursor.js"></script>
+    <script src="../assets/js/navigation.js"></script>
+    <script src="../assets/js/particles.js"></script>
+  </body>
+</html>
