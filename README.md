@@ -1,3 +1,4 @@
 # Welcome to my profile, I'm Damian, a Software Engineering student.
 
-You can visit my portfolio to get more info: https://phungcamtann.github.io/PhungCamTann/
+“Feel free to explore my portfolio to learn more about my work, experience, and projects:”
+https://phungcamtann.github.io/PhungCamTann/
