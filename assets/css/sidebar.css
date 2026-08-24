@@ -3,19 +3,26 @@
 ========================================= */
 .sidebar {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: var(--sidebar-viewport-gap);
+  left: var(--sidebar-viewport-gap);
   width: var(--sidebar-width);
-  height: 100vh;
-  height: 100dvh;
+  height: calc(
+    100vh - var(--sidebar-viewport-gap) - var(--sidebar-viewport-gap)
+  );
+  height: calc(
+    100dvh - var(--sidebar-viewport-gap) - var(--sidebar-viewport-gap)
+  );
   padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   z-index: var(--z-sidebar);
-  /* Kế thừa từ class .glass-panel nhưng ta set thêm border phải */
-  border-right: 1px solid var(--glass-border);
-  border-radius: 0;
+  background:
+    linear-gradient(var(--glass-bg), var(--glass-bg)) padding-box,
+    var(--sidebar-border-gradient) border-box;
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--sidebar-shadow);
   overflow-y: auto;
   overscroll-behavior: contain;
 }

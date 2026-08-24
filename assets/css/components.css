@@ -110,6 +110,90 @@
   -webkit-backdrop-filter: blur(var(--glass-blur));
 }
 
+/* Reusable interactive treatment for selected content cards. */
+.card-hover-accent {
+  --card-border-width: 1px;
+  --card-border-duration: 3.2s;
+  --card-hover-lift: -4px;
+  --card-hover-scale: 1.008;
+
+  isolation: isolate;
+  transform-origin: center;
+  transition:
+    transform var(--trans-smooth),
+    box-shadow var(--trans-smooth);
+}
+
+.card-hover-accent:focus-visible,
+.card-hover-accent:focus-within {
+  box-shadow:
+    var(--glass-shadow),
+    0 12px 32px rgba(var(--accent-rgb), 0.22);
+}
+
+.card-hover-accent:focus-visible {
+  outline: 2px solid var(--accent-glow);
+  outline-offset: 4px;
+}
+
+@supports (-webkit-mask-composite: xor) or (mask-composite: exclude) {
+  .card-hover-accent::before {
+    --card-border-angle: 0deg;
+
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    padding: var(--card-border-width);
+    border-radius: inherit;
+    background: conic-gradient(
+      from var(--card-border-angle),
+      rgba(var(--accent-rgb), 0.2),
+      rgba(var(--accent-rgb), 0.95) 24%,
+      rgba(var(--accent-secondary-rgb), 0.88) 48%,
+      rgba(var(--accent-rgb), 0.28) 70%,
+      rgba(var(--accent-secondary-rgb), 0.65) 86%,
+      rgba(var(--accent-rgb), 0.2)
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--trans-fast);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+  }
+
+  .card-hover-accent:focus-visible::before,
+  .card-hover-accent:focus-within::before {
+    opacity: 1;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-hover-accent:hover,
+  .card-hover-accent:focus-visible,
+  .card-hover-accent:focus-within {
+    transform: translateY(var(--card-hover-lift)) scale(var(--card-hover-scale));
+    box-shadow:
+      var(--glass-shadow),
+      0 12px 32px rgba(var(--accent-rgb), 0.22);
+  }
+
+  @supports (-webkit-mask-composite: xor) or (mask-composite: exclude) {
+    .card-hover-accent:hover::before,
+    .card-hover-accent:focus-visible::before,
+    .card-hover-accent:focus-within::before {
+      opacity: 1;
+      animation: cardBorderSpin var(--card-border-duration) linear infinite;
+    }
+  }
+}
+
 /* =========================================
    CUSTOM CURSOR
 ========================================= */
@@ -160,7 +244,7 @@
    SECTION HEADING
 ========================================= */
 .section-header {
-  margin-bottom: 3rem;
+  margin-bottom: var(--section-gap);
 }
 
 .section-title {

@@ -8,8 +8,11 @@ The project uses plain HTML, modular CSS, Vanilla JavaScript, and Bootstrap 5.3.
 
 - Seven-page static portfolio, including a custom 404 page
 - Responsive layouts built on Bootstrap Grid
-- Fixed desktop sidebar and Bootstrap Offcanvas mobile navigation
+- Floating desktop sidebar and Bootstrap Offcanvas mobile navigation
 - Custom Damian neon and glassmorphism theme
+- Reusable animated card accent with progressive CSS-mask enhancement
+- Featured Work and Product sections with an infinite three-group marquee
+- Position-aware CSS 3D depth and Pointer Events drag-to-explore interaction
 - Session-aware Home loading screen
 - Animated terminal typing sequence
 - Canvas particle network background
@@ -23,7 +26,7 @@ The project uses plain HTML, modular CSS, Vanilla JavaScript, and Bootstrap 5.3.
 | ------------------ | ---------------------------------------------------------- |
 | HTML5              | Multi-page structure and semantic content                  |
 | CSS3               | Damian theme, components, animations, and responsive rules |
-| Vanilla JavaScript | Loader, typing, navigation, particles, and cursor behavior |
+| Vanilla JavaScript | Loader, typing, navigation, carousel depth/drag, particles, and cursor behavior |
 | Bootstrap 5.3.8    | Reboot foundation, responsive Grid, and mobile Offcanvas   |
 | Font Awesome 6.4.0 | Interface icons                                            |
 | Inter              | Main interface typography                                  |
@@ -53,12 +56,36 @@ The custom styles are separated by responsibility:
 JavaScript uses classic scripts with feature-specific responsibilities:
 
 - `main.js` — Home initialization orchestration
+- `carousel-depth.js` — Featured marquee depth, drag state, and lifecycle coordination
 - `loader.js` — loading screen and visit-session handling
 - `typing.js` — terminal typing sequence
 - `navigation.js` — active navigation state and Offcanvas cleanup
 - `particles.js` — canvas particle background
 - `cursor.js` — custom pointer behavior
 - `reveal.js` — future-ready reveal observer; currently not loaded by a page
+
+### Interactive Home Architecture
+
+The desktop shell uses shared sidebar width, viewport-gap, content-gap, and content-width tokens. The sidebar is a rounded floating panel with viewport-relative height and internal scrolling; below Bootstrap's `lg` breakpoint it is replaced by the existing Offcanvas navigation.
+
+The reusable `card-hover-accent` component owns card lift, glow, and the progressively enhanced animated border. Unsupported mask composition retains the normal glass border and card content.
+
+Home Featured sections use four source cards and three visual groups:
+
+```text
+Previous Clone | Accessible Original | Next Clone
+```
+
+Carousel transforms have separate ownership:
+
+- `.featured-track` — linear automatic marquee translation
+- `.featured-drag-offset` — normalized manual horizontal offset
+- `.featured-item` — positional `rotateY`, `translateZ`, and scale
+- `.work-card.card-hover-accent` — card hover and focus treatment
+
+`carousel-depth.js` coordinates depth and drag through one `requestAnimationFrame` loop. Geometry references are cached, reads precede style writes, `IntersectionObserver` limits offscreen work, and `animationiteration` forces seam synchronization. Pointer Events support mouse, touch, and pen; horizontal drag uses pointer capture while `touch-action: pan-y` preserves vertical page scrolling.
+
+Only the middle group is exposed to assistive technology. Both visual clones are `aria-hidden`, contain no focusable controls, and remain pointer surfaces for hover and drag. Keyboard focus pauses the marquee. Reduced-motion mode keeps the original cards in a static grid and does not initialize marquee depth or drag listeners.
 
 ## Project Structure
 
@@ -84,6 +111,7 @@ JavaScript uses classic scripts with feature-specific responsibilities:
 │   │   └── responsive.css
 │   ├── js/
 │   │   ├── main.js
+│   │   ├── carousel-depth.js
 │   │   ├── loader.js
 │   │   ├── typing.js
 │   │   ├── navigation.js
@@ -92,14 +120,15 @@ JavaScript uses classic scripts with feature-specific responsibilities:
 │   │   └── reveal.js
 │   └── images/
 │       └── avatar-placeholder.jpg
-└── README.md
+├── README.md
+└── Tech.md
 ```
 
 ## Pages
 
 | Page     | Purpose                                                         |
 | -------- | --------------------------------------------------------------- |
-| Home     | Profile card, personal introduction, social links, and terminal |
+| Home     | Profile/About overview, terminal, Featured Work, and Featured Products |
 | About    | Biography and skills                                            |
 | Resume   | Education and experience timeline                               |
 | Works    | Portfolio Website and future project updates                    |
@@ -111,7 +140,7 @@ JavaScript uses classic scripts with feature-specific responsibilities:
 
 The source includes skip navigation links, semantic main landmarks, visible keyboard focus styles, accessible form labels, decorative-icon handling, and reduced-motion behavior.
 
-When reduced motion is requested, terminal content is rendered without typing animation, particles become a static scene, the custom cursor falls back to the native pointer, and non-essential motion is reduced. These features provide an accessibility foundation; they are not a claim of full WCAG conformance.
+When reduced motion is requested, terminal content is rendered without typing animation, particles become a static scene, the custom cursor falls back to the native pointer, Featured cards use a static grid without clones, 3D, or drag, and non-essential card motion is removed. These features provide an accessibility foundation; they are not a claim of full WCAG conformance.
 
 ## Running Locally
 

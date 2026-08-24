@@ -170,7 +170,7 @@
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: auto;
 }
 
 .home-about h2 {
@@ -233,6 +233,220 @@
   color: var(--text-secondary);
 }
 
+/* 3. Home Featured Work / Products */
+.featured-section {
+  --carousel-gap: 1.5rem;
+  --carousel-card-width: clamp(15rem, calc(100vw - 5.5rem), 28rem);
+  --carousel-max-rotate: 6deg;
+  --carousel-center-scale: 1.02;
+  --carousel-center-z: 8px;
+  --carousel-edge-z: -20px;
+
+  margin-top: var(--section-gap);
+}
+
+.featured-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: var(--home-row-gap);
+}
+
+.featured-heading {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
+.featured-section-title {
+  margin-bottom: 0.5rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.featured-view-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  margin-left: auto;
+  padding: 0.5rem 0;
+  color: var(--accent-glow);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-decoration: none;
+  transition: color var(--trans-fast);
+}
+
+.featured-view-more:hover {
+  color: var(--text-primary);
+}
+
+.featured-view-more:focus-visible {
+  color: var(--text-primary);
+  outline: 2px solid var(--accent-glow);
+  outline-offset: 4px;
+}
+
+.featured-viewport {
+  width: 100%;
+}
+
+.featured-track {
+  display: block;
+}
+
+.featured-drag-offset {
+  --carousel-drag-offset: 0px;
+
+  display: block;
+}
+
+.featured-group--original {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--carousel-gap);
+}
+
+.featured-group--clone {
+  display: none;
+}
+
+.featured-item {
+  --depth-rotate: 0deg;
+  --depth-z: 0px;
+  --depth-scale: 1;
+
+  display: flex;
+  min-width: 0;
+}
+
+.featured-item > .work-card {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.featured-item .work-content h3 {
+  margin-bottom: 0.8rem;
+  color: var(--text-primary);
+  font-size: 1.3rem;
+}
+
+@supports (animation-name: featuredMarquee) and
+  (transform: translateX(-33.3333333333%)) {
+  @media (prefers-reduced-motion: no-preference) {
+    .featured-viewport {
+      overflow: hidden;
+      margin-block: -1rem;
+      padding-block: 1rem;
+    }
+
+    .featured-track {
+      display: flex;
+      width: max-content;
+      animation: featuredMarquee var(--carousel-duration) linear infinite;
+      will-change: transform;
+    }
+
+    .featured-drag-offset {
+      display: flex;
+      width: max-content;
+      transform: translateX(var(--carousel-drag-offset, 0px));
+      will-change: transform;
+    }
+
+    .featured-group {
+      display: flex;
+      flex: 0 0 auto;
+      gap: var(--carousel-gap);
+      padding-right: var(--carousel-gap);
+    }
+
+    .featured-group--clone {
+      display: flex;
+    }
+
+    .featured-item {
+      flex: 0 0 var(--carousel-card-width);
+      width: var(--carousel-card-width);
+    }
+
+    .featured-viewport:focus-within .featured-track {
+      animation-play-state: paused;
+    }
+
+    .featured-viewport:is(.is-drag-pressing, .is-dragging) .featured-track {
+      animation-play-state: paused;
+    }
+  }
+}
+
+@supports
+  (perspective: 1px) and
+  (transform-style: preserve-3d) and
+  (overflow: clip) {
+  @media (prefers-reduced-motion: no-preference) {
+    .featured-section.carousel-depth-ready .featured-viewport {
+      overflow: clip;
+      perspective: var(--carousel-perspective);
+      perspective-origin: center center;
+    }
+
+    .featured-section.carousel-depth-ready .featured-track,
+    .featured-section.carousel-depth-ready .featured-drag-offset,
+    .featured-section.carousel-depth-ready .featured-group {
+      pointer-events: none;
+      transform-style: preserve-3d;
+    }
+
+    .featured-section.carousel-depth-ready .featured-group {
+      position: relative;
+    }
+
+    .featured-section.carousel-depth-ready .featured-item {
+      pointer-events: auto;
+      transform: rotateY(var(--depth-rotate, 0deg))
+        translateZ(var(--depth-z, 0px)) scale(var(--depth-scale, 1));
+      transform-origin: center center;
+      will-change: transform;
+    }
+
+    .featured-section.carousel-depth-ready .featured-item > .work-card {
+      pointer-events: auto;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .featured-section.carousel-drag-ready .featured-viewport {
+    touch-action: pan-y;
+  }
+
+  .featured-section.carousel-drag-ready .featured-viewport.is-dragging {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+@media
+  (hover: hover) and
+  (pointer: fine) and
+  (prefers-reduced-motion: no-preference) {
+  .featured-section.carousel-drag-ready .featured-viewport {
+    cursor: grab;
+  }
+
+  .featured-section.carousel-drag-ready .featured-viewport a {
+    cursor: pointer;
+  }
+
+  .featured-section.carousel-drag-ready .featured-viewport.is-dragging,
+  .featured-section.carousel-drag-ready .featured-viewport.is-dragging * {
+    cursor: grabbing;
+  }
+}
+
 /* =========================================
    RESUME PAGE
 ========================================= */
@@ -274,13 +488,6 @@
 /* Resume Cards */
 .resume-card {
   padding: 1.5rem;
-  transition: var(--trans-smooth);
-}
-
-.resume-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(var(--accent-rgb), 0.3);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .resume-date {
@@ -330,14 +537,6 @@ ul.resume-desc li + li {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: var(--trans-smooth);
-}
-
-/* Hiệu ứng nảy và phát sáng viền khi Hover Card */
-.work-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-  border-color: rgba(var(--accent-rgb), 0.4);
 }
 
 .work-image {
@@ -363,8 +562,10 @@ ul.resume-desc li + li {
   transition: transform 0.5s ease;
 }
 
-.work-card:hover .work-image img {
-  transform: scale(1.1); /* Zoom ảnh nhẹ khi hover */
+@media (prefers-reduced-motion: no-preference) {
+  .work-card:hover .work-image img {
+    transform: scale(1.1); /* Zoom ảnh nhẹ khi hover */
+  }
 }
 
 /* Lớp phủ đen (Overlay) và Nút bấm ẩn */

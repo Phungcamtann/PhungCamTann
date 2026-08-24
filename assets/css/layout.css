@@ -11,9 +11,11 @@
 .main-content {
   flex: 1;
   min-width: 0;
-  margin-left: var(--sidebar-width);
-  /* Đổi padding tĩnh (4rem) thành % để 2 bên lề tự động thở đều theo màn hình */
-  padding: 4rem 5%;
+  margin-left: calc(
+    var(--sidebar-width) + var(--sidebar-viewport-gap) +
+      var(--sidebar-content-gap)
+  );
+  padding: var(--content-padding-block) var(--content-padding-inline);
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;

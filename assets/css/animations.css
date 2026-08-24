@@ -15,6 +15,12 @@
   transform: translateY(0);
 }
 
+@property --card-border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -51,6 +57,22 @@
   }
 }
 
+@keyframes cardBorderSpin {
+  to {
+    --card-border-angle: 1turn;
+  }
+}
+
+@keyframes featuredMarquee {
+  from {
+    transform: translateX(-33.3333333333%);
+  }
+
+  to {
+    transform: translateX(-66.6666666667%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   #loading-screen {
     transition: none;
@@ -73,11 +95,26 @@
   }
 
   .damian-btn:hover,
-  .social-icon:hover,
-  .resume-card:hover,
-  .work-card:hover,
-  .work-card:hover .work-image img {
+  .social-icon:hover {
     transform: none;
+  }
+
+  .card-hover-accent,
+  .card-hover-accent:hover,
+  .card-hover-accent:focus-visible,
+  .card-hover-accent:focus-within {
+    transform: none;
+    transition: none;
+  }
+
+  .card-hover-accent::before {
+    transition: none;
+  }
+
+  .card-hover-accent:hover::before,
+  .card-hover-accent:focus-visible::before,
+  .card-hover-accent:focus-within::before {
+    animation: none;
   }
 
   .custom-cursor-enabled .custom-cursor,

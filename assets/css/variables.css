@@ -5,6 +5,7 @@
   --bg-secondary: #121218;
   --accent-glow: #ff4696;
   --accent-rgb: 255, 70, 150;
+  --accent-secondary-rgb: 156, 92, 255;
   --color-white: #fff;
 
   /* Typography */
@@ -19,6 +20,13 @@
   --glass-border: rgba(var(--accent-rgb), 0.15);
   --glass-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
   --glass-blur: 16px;
+  --sidebar-border-gradient: linear-gradient(
+    145deg,
+    rgba(var(--accent-rgb), 0.5),
+    rgba(30, 16, 51, 0.95)
+  );
+  --sidebar-shadow:
+    var(--glass-shadow), 0 0 28px rgba(var(--accent-rgb), 0.14);
 
   /* Radius */
   --radius-xs: 2px;
@@ -33,7 +41,28 @@
 
   /* Layout */
   --sidebar-width: 260px;
+  --sidebar-viewport-gap: 1.25rem;
+  --sidebar-content-gap: 1.5rem;
   --content-max-width: 1150px;
+  --content-padding-block: 4rem;
+  --content-padding-inline: 1rem;
+  --content-mobile-padding-top: 5.5rem;
+  --content-mobile-padding-inline: 1.5rem;
+  --content-mobile-padding-bottom: 2rem;
+  --content-compact-padding-inline: 1rem;
+  --section-gap: 3rem;
+  --home-column-gap: 1.5rem;
+  --home-row-gap: 1.5rem;
+
+  /* Featured marquee foundation. */
+  --carousel-gap: 2rem;
+  --carousel-card-width: min(20rem, calc(100vw - 2rem));
+  --carousel-perspective: 1200px;
+  --carousel-max-rotate: 12deg;
+  --carousel-center-scale: 1.04;
+  --carousel-center-z: 18px;
+  --carousel-edge-z: -40px;
+  --carousel-duration: 53.333s;
 
   /* Custom application layers; Bootstrap owns component overlay layers. */
   --z-content: 1;

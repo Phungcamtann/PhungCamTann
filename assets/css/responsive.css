@@ -7,12 +7,118 @@
   .custom-cursor-enabled textarea {
     cursor: none;
   }
+
+  @supports selector(html:has(body)) {
+    .custom-cursor-enabled:has(
+        .carousel-drag-ready .featured-viewport:hover
+      )
+      .custom-cursor,
+    .custom-cursor-enabled:has(
+        .carousel-drag-ready .featured-viewport:hover
+      )
+      .cursor-glow {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .featured-section {
+    --carousel-gap: 2rem;
+    --carousel-card-width: clamp(18.5rem, 24vw, 21.5rem);
+    --carousel-max-rotate: 8deg;
+    --carousel-center-scale: 1.03;
+    --carousel-center-z: 12px;
+    --carousel-edge-z: -28px;
+  }
+
+  .featured-group--original {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  :root {
+    --sidebar-viewport-gap: 1rem;
+    --sidebar-content-gap: 1rem;
+    --content-padding-inline: 0.75rem;
+  }
+
+  .profile-bg {
+    height: 140px;
+  }
+
+  .profile-avatar {
+    width: 116px;
+    height: 116px;
+    margin-top: -58px;
+  }
+
+  .profile-info {
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+
+  .profile-role {
+    margin-bottom: 1.25rem;
+  }
+
+  .social-links {
+    gap: 0.75rem;
+  }
+
+  .home-about {
+    padding: 2rem;
+  }
+
+  .home-about h2,
+  .about-text p {
+    margin-bottom: 1.25rem;
+  }
+
+  .info-list {
+    margin-bottom: 2rem;
+  }
+
+  .featured-section {
+    --carousel-max-rotate: 10deg;
+    --carousel-center-scale: 1.035;
+    --carousel-center-z: 15px;
+    --carousel-edge-z: -34px;
+  }
+}
+
+@media (min-width: 992px) {
+  .profile-card,
+  .home-about {
+    flex: 1 1 auto;
+    width: 100%;
+    height: 100%;
+  }
+
+  .profile-info {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .featured-section {
+    --carousel-max-rotate: 12deg;
+    --carousel-center-scale: 1.04;
+    --carousel-center-z: 18px;
+    --carousel-edge-z: -40px;
+  }
+
 }
 
 @media (max-width: 991.98px) {
   .main-content {
     margin-left: 0;
-    padding: 5.5rem 1.5rem 2rem;
+    padding: var(--content-mobile-padding-top)
+      var(--content-mobile-padding-inline)
+      var(--content-mobile-padding-bottom);
   }
 }
 
@@ -27,8 +133,8 @@
 /* --- MOBILE (Max 576px) --- */
 @media (max-width: 575.98px) {
   .main-content {
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding-right: var(--content-compact-padding-inline);
+    padding-left: var(--content-compact-padding-inline);
   }
 
   .about-bio,
